@@ -1,13 +1,70 @@
+html,
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  padding: 0;
+  border: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.main__post-block {
+  text-decoration: none;
+}
+
+.main__post-item {
+  list-style-type: none;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+
+.main__post-item-link,
+.main__post-item-link:visited {
+  color: #bb2e1f;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.main__post-item--description {
+  display: inline;
+  text-decoration: none;
+}
+
+.main__post-item-description--link-item {
+  color: black;
+}
+
+.navigation {
+  margin-top: 40px;
+  text-align: left;
+  list-style-type: none;
+  display: flex;
+}
+
+.navigation-link,
+.navigation:visited {
+  font-size: 20px;
+  margin-right: 15px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.navigation__active-link {
+  color: #bb2e1f;
 }
