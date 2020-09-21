@@ -1,5 +1,6 @@
 html,
-body {
+body,
+head {
   margin: 0;
   padding: 0;
   border: 0;
@@ -17,6 +18,21 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 .main__post-block {
@@ -67,4 +83,29 @@ code {
 
 .navigation__active-link {
   color: #bb2e1f;
+}
+
+.background__dark {
+  background-color: #1c2022;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.background__light {
+  background-color: white;
+}
+
+.btn-clear {
+  border: none;
+  background: transparent;
+}
+.dark--text {
+  color: white;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
 }

@@ -1,12 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Loading from "./Loading";
 import queryString from "query-string";
 import { fetchComments } from "../utils/api";
 
 const DisplayComments = ({ comments }) => {
-  console.log("comments:", comments);
   const userComments = comments || [];
-  console.log("userComments:", userComments);
   return userComments.map((comment) => {
     return (
       <div key={comment.id}>
@@ -19,34 +18,33 @@ const DisplayComments = ({ comments }) => {
   });
 };
 
-class Comments extends React.Component {
-  state = {
-    loading: true,
-    userComments: null,
-  };
+DisplayComments.propTypes = {
+  comments: PropTypes.array,
+};
 
-  async componentDidMount() {
-    const IDs = queryString
-      .parse(this.props.location.search)
-      .postIds.split(",");
-    const postComments = await fetchComments(IDs);
-    console.log("postComments:", postComments);
-    this.setState({
-      loading: false,
-      userComments: postComments,
+const Comments = (props) => {
+  const [loading, setLoading] = React.useState(true);
+  const [userComments, setUserComments] = React.useState();
+
+  const searchLocation = props.location.search;
+
+  React.useEffect(() => {
+    const IDs = queryString.parse(searchLocation).postIds.split(",");
+    fetchComments(IDs).then((postComments) => {
+      setUserComments(postComments);
+      setLoading(false);
     });
+  }, [searchLocation]);
+
+  if (loading) {
+    return <Loading />;
   }
 
-  render() {
-    if (this.state.loading) {
-      return <Loading />;
-    }
-    return (
-      <div>
-        <DisplayComments comments={this.state.userComments} />
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <DisplayComments comments={userComments} />
+    </div>
+  );
+};
 
 export default Comments;

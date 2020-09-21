@@ -1,29 +1,23 @@
 import React from "react";
 
-class Loading extends React.Component {
-  state = {
-    loading: "Loading",
-  };
+const Loading = () => {
+  const [isLoading, setLoading] = React.useState({ loading: "Loading" });
 
-  componentDidMount() {
-    this.interval = window.setInterval(() => {
-      this.state.loading === "Loading..."
-        ? this.setState({ loading: "Loading" })
-        : this.setState(({ loading }) => {
+  React.useEffect(() => {
+    const interval = window.setInterval(() => {
+      isLoading.loading === "Loading..."
+        ? setLoading({ loading: "Loading" })
+        : setLoading((prevLoading) => {
             return {
-              loading: `${loading}.`,
+              loading: `${prevLoading.loading}.`,
             };
           });
     }, 250);
-  }
 
-  componentWillUnmount() {
-    window.clearInterval(this.interval);
-  }
+    return () => window.clearInterval(interval);
+  }, [isLoading]);
 
-  render() {
-    return <h1>{this.state.loading}</h1>;
-  }
-}
+  return <h1>{isLoading.loading}</h1>;
+};
 
 export default Loading;
